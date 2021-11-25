@@ -13,7 +13,7 @@ const cartSchema = mongoose.Schema({
 
 const CartItem = mongoose.model('cart', cartSchema);
 
-exports.assNewItem = data =>{
+exports.addNewItem = data =>{
     return new Promise((resolve, reject) => {
         mongoose
             .connect(DB_URL)
