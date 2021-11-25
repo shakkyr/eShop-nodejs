@@ -5,14 +5,37 @@ exports.getSignup = (req, res, next) => {
 };
 
 exports.postSignup = (req, res, next) => {
-  authModel.createNewUser(req.body.username, req.body.email, req.body.password)
-    .then(() =>res.redirect("/login"))
-    .catch((err) => {
+  authModel
+  .createNewUser(req.body.username, req.body.email, req.body.password)    .then(() =>res.redirect("/login"))
+  .then(() => res.redirect("/login"))
+  .catch(err => {
       console.log(err);
       res.redirect("/signup");
     });
 };
 
 exports.getLogin = (req, res, next) => {
-  res.render("login");
+    
+    res.render("login", {
+        authError : req.flash('authError')[0]
+    });
 };
+
+exports.postLogin = (req, res, next) => {
+    authModel
+    .login(req.body.email, req.body.password)
+    .then(result => {
+        req.session.userId = result.id;
+        res.redirect("/");
+    })
+    .catch(err => {
+        req.flash('authError', err)
+        res.redirect("/login");
+    })
+};
+
+exports.logout = (req,res, next)=>{
+    req.session.destroy(()=>{
+        res.redirect("/")
+    })
+}

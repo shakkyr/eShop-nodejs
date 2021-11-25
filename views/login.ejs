@@ -3,11 +3,17 @@
 
 <div class="container text-center">
     <h3>Login</h3>
-    <form action="/signup" method="POST">
+    <form action="/login" method="POST">
         <input type="email" class="form-control" name="email" placeholder="E-mail">
         <input type="password" class="form-control" name="password" placeholder="Password">
-        <input type="submit" value="Create Account" class="btn btn-primary">
+        <input type="submit" value="Log In" class="btn btn-primary">
     </form>
+    <br>
+    <% if(authError){ %>
+    <p class="alert alert-danger">
+        <%= authError  %>
+    </p>
+    <% } %>
     <br>
     <div>
         Don't have Account ? <a href="/signup">Create Account</a>
