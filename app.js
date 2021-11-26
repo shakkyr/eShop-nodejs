@@ -10,7 +10,7 @@ const productRouter = require("./routes/product.route");
 const authRouter = require("./routes/auth.route");
 const cartRouter = require("./routes/cart.route");
 const adminRouter = require("./routes/admin.route");
-// const orderRouter = require("./routes/orders.route");
+const orderRouter = require("./routes/orders.route");
 
 const app = express();
 
@@ -39,7 +39,7 @@ app.use("/", authRouter);
 app.use("/product", productRouter);
 app.use("/cart", cartRouter);
 app.use("/admin", adminRouter);
-// app.use("/", orderRouter);
+app.use("/", orderRouter);
 
 app.get("/error", (req, res, next) => {
     res.status(500);
