@@ -6,6 +6,8 @@ const authGaurd = require('./guards/auth.guard')
 
 const cartController = require('../controllers/cart.controller');
 
+router.get('/', authGaurd.isAuth, cartController.getCart)
+
 router.post(
     "/",
     authGaurd.isAuth,
