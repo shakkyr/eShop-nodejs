@@ -15,6 +15,12 @@
         <input type="submit" class="btn btn-primary" value="filter">
 
     </form>
+    <% if(validationError) { %>
+        <p class="alert alert-danger">
+            <%= validationError.msg%>
+        </p>
+    <% } %>
+
     <% if(products.length === 0) { %>
       <div class="alert alert-danger">
           There is no products
@@ -31,12 +37,12 @@
                                     <p>Price: <%= product.price %> $</p>
                             </h5>
                             <form action="/cart" method="POST" class="add-to-cart-form">
-                                <input type="number" name="amount" class="form-control">
-                                <input type="hidden" name="name" value="<%= product.name%>">
-                                <input type="hidden" name="price" value="<%= product.price%>">
-                                <input type="hidden" name="productId" value="<%= product.id%>">
-                                <input type="hidden" name="redirectTo" value="/">
-                                <input type="submit" value="Add To Cart"class='btn btn-primary'>
+                            <input type="number" name="amount" class="form-control">
+                            <input type="hidden" name="name" value="<%= product.name%>">
+                            <input type="hidden" name="price" value="<%= product.price%>">
+                            <input type="hidden" name="productId" value="<%= product._id%>">
+                            <input type="hidden" name="redirectTo" value="/">
+                            <input type="submit" value="Add to cart" class="btn btn-primary">
     
                             </form>
                         </div>
