@@ -1,6 +1,6 @@
 const express = require("express");
 const path = require("path");
-
+require('dotenv').config()
 const session = require("express-session");
 const SessionStore = require("connect-mongodb-session")(session);
 const flash = require("connect-flash");
@@ -19,7 +19,7 @@ app.use(express.static(path.join(__dirname, "images")));
 app.use(flash());
 
 const STORE = new SessionStore({
-    uri : 'mongodb://localhost:27017/online-shop',
+    uri : `mongodb+srv://${process.env.DB_URL}/online-shop?retryWrites=true&w=majority`,
     collection: "sessions"
 })
 

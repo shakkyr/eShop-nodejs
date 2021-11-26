@@ -1,5 +1,5 @@
 const productsModel = require("../models/products.model");
-// const ordersModel = require("../models/order.model");
+const ordersModel = require("../models/order.model");
 const validationResult = require("express-validator").validationResult;
 
 exports.getAdd = (req, res, next) => {

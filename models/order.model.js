@@ -1,9 +1,9 @@
 const mongoose = require("mongoose");
-
+require('dotenv').config()
 const cartModel = require("./cart.model");
 
 const DB_URL =
-    "mongodb+srv://kmrscript:kmrscript@cluster0-eb4ve.mongodb.net/online-shop?retryWrites=true&w=majority";
+`mongodb+srv://${process.env.DB_URL}/online-shop?retryWrites=true&w=majority`;
 const orderSchema = mongoose.Schema({
     name: String,
     price: Number,

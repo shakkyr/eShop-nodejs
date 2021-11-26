@@ -1,8 +1,8 @@
 const mongoose = require("mongoose");
-
+require('dotenv').config()
 const bcrypt = require("bcrypt");
 
-const DB_URL = "mongodb://localhost:27017/online-shop";
+const DB_URL = `mongodb+srv://${process.env.DB_URL}/online-shop?retryWrites=true&w=majority`;
 
 const userSchema = mongoose.Schema({
   username: String,
